@@ -56,12 +56,33 @@ public class QueueTest {
     }
 
     @Test
-    public void whenPutCustomerAAndBThenReturnAAndB() {
+     public void whenPutCustomerAAndBThenReturnAAndB() {
         String expected = "A,B";
         queue.enQueue("A");
         queue.enQueue("B");
         String actual = queue.showQueueCustomer();
         assertEquals("Customer is not A.B",expected,actual);
+    }
+
+    @Test
+    public void whenCustomerHaveABThenDeQA() {
+        String expected = "B";
+        queue.enQueue("A");
+        queue.enQueue("B");
+        queue.deQueue();
+        String actual = queue.showQueueCustomer();
+        assertEquals("Customer is not A",expected,actual);
+    }
+
+    @Test
+    public void whenCustomerHaveABCThenDeQA() {
+        String expected = "C";
+        queue.enQueue("A");
+        queue.enQueue("B");
+        queue.enQueue("C");
+        queue.deQueue();
+        String actual = queue.showQueueCustomer();
+        assertEquals("Customer is not A",expected,actual);
     }
 
 }
